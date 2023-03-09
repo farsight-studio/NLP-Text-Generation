@@ -34,11 +34,8 @@ output = generator(initial_sentence, max_length = max_length, num_return_sequenc
 
 # Write the output to a file
 with open('output.txt', 'w') as f:
-    ival = 1
-    for val in output:
-        print('---\nOutput {} of {}\n---\n'.format(ival, num_return_sequences), file=f)
+    for ival, val in enumerate(output, start=1):
+        print(f'---\nOutput {ival} of {num_return_sequences}\n---\n', file=f)
         print(val['generated_text'], file=f)
         if ival < num_return_sequences: print(file=f)
-        ival += 1
-
 print('Done')
